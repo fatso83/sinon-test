@@ -1,0 +1,31 @@
+version: 2
+updates:
+    - package-ecosystem: "npm"
+      directory: "/"
+      schedule:
+          interval: "monthly"
+      groups:
+          npm-patches:
+              patterns:
+                  - "*"
+              update-types:
+                  - "patch"
+                  - "minor"
+          npm-security:
+              applies-to: security-updates
+              patterns:
+                  - "*"
+
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      schedule:
+          interval: "monthly"
+      cooldown:
+          default-days: 7
+      groups:
+          action-deps:
+              patterns:
+                  - "*"
+              update-types:
+                  - "patch"
+                  - "minor"
